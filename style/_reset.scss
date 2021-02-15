@@ -1,0 +1,21 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin and padding */
+tbody, tfoot, thead, tr, th, td{
+	margin: 0;
+	padding: 0;
+}
+
+/*	no style	*/
+ul[class],
+ol[class]{
+	list-style: none;
+}
+
+a{
+  text-decoration: none;
+}

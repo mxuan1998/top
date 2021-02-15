@@ -1,0 +1,313 @@
+@import 'reset';
+
+$breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px);
+$col-margin: 5px;
+$col-count: 12;
+$container-values: (0px: 100%, 576px: 540px, 768px: 720px, 992px: 960px, 1200px: 1140px);
+
+/*  responsive container */
+@each $size, $values in $container-values{
+  @media(min-width: $size){
+    .container{
+      max-width: $values;
+    }
+  }
+}
+
+.container-fluid{
+  max-width: 100%;
+}
+
+/*  grid basic */
+.row{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row>*{
+  margin-left: $col-margin;
+  margin-right: $col-margin;
+}
+
+.col{
+  flex: 1;
+}
+
+@function calcwidth($number){
+  @return calc((#{$number} / #{$col-count} * 100%) - 2 * #{$col-margin});
+}
+
+@each $size, $value in $breakpoints{
+  @media(min-width: $value){
+    @for $i from 1 through $col-count{
+      .col-#{$size}-#{$i}{
+        width: calcwidth($i) !important;
+      }
+    }
+  }
+}
+
+/*  Flexbox   */
+
+/*Justify-content*/
+
+$justify-content: (justify-start: flex-start, justify-center: center, justify-evenly: space-evenly,
+justify-end: flex-end, justify-space-around: space-around, justify-space-between: space-between);
+
+@each $justify, $value in $justify-content {
+  .#{$justify} {
+    justify-content: $value;
+  }
+}
+
+/*Align items*/
+$align-items: (align-items-start: flex-start, align-items-center: center, align-items-strech: strech,
+align-items-end: flex-end, align-items-baseline: baseline);
+
+@each $align, $value in $align-items {
+  .#{$align} {
+    align-items: $value;
+  }
+}
+
+/*Align content*/
+
+$align-content: (align-content-top: flex-start, align-content-center: center, align-content-strech: strech,
+align-content-bottom: flex-end, align-content-space-around: space-around, align-content-space-between: space-between);
+
+@each $align, $value in $align-content {
+  .#{$align} {
+    align-content: $value;
+  }
+}
+
+/*Flex direction*/
+
+$align-items: (flex-column: column, flex-row: row, flex-column-reverse: column-reverse, 
+                flex-row-reverse: row-reverse);
+
+@each $align, $value in $align-items {
+  .#{$align} {
+    flex-direction: $value;
+  }
+}
+
+/*Align self*/
+
+$align-self: (align-self-auto: auto, align-self-start: flex-start, align-self-end: flex-end, 
+              align-self-center: center, align-self-baseline: baseline, align-self-strech: strech);
+
+@each $align, $value in $align-self{
+  .#{$align}{
+    align-self: #{$value};
+  }
+}
+
+/*Wrap*/
+
+.f-wrap {
+	flex-wrap: wrap;
+}
+
+.f-no-wrap {
+	flex-wrap: nowrap;
+}
+
+/*first and last item*/
+.first-item{
+  order: -100;
+}
+
+.last-item{
+  order: 100;
+}
+
+
+/*    Utilities   */
+
+/*Display - responsive*/
+
+$display-values: (none, flex, inline-flex, block, inline, inline-block);
+
+@each $size, $value in $breakpoints{
+  @media(min-width: $value){
+    @for $i from 1 through length($display-values){
+      .d-#{nth($display-values, $i)}-#{$size}{
+        display: #{nth($display-values, $i)};
+      }
+    }
+  }
+}
+
+@each $values in $display-values{
+  .d-#{$values}{
+    display: #{$values};
+  }
+}
+
+/*Position*/
+
+$positions-map : (position-fixed : fixed, position-static : static, position-relative : relative, 
+                  position-absolute : absolute);
+
+@each $position, $value in $positions-map {
+  .#{$position} {
+    position: $value;
+  }
+}
+
+/*Text alignments*/
+$alignment-map : (text-left : left, text-center : center, text-right : right);
+
+@each $align-class, $align-value in $alignment-map {
+  .#{$align-class} {
+    text-align: $align-value;
+  }
+}
+
+/*Text-transform*/
+
+.text-uppercase{
+	text-transform: uppercase;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+/*Font-weight*/
+
+$fontweight-map : (normal-font : normal, bold-font : bold, medium-font : medium);
+
+@each $font-class, $font-value in $fontweight-map {
+ .#{$font-class} {
+	 font-weight: $font-value;
+ }
+}
+
+/*Margins*/
+
+$margin-top-map :    (mt-0: 0rem, mt-1: 0.25rem, mt-2: 0.5rem, mt-3: 1rem, mt-4: 1.5rem, mt-5: 2rem, mt-6: 3rem);
+$margin-right-map :  (mr-0: 0rem, mr-1: 0.25rem, mr-2: 0.5rem, mr-3: 1rem, mr-4: 1.5rem, mr-5: 2rem, mr-6: 3rem);
+$margin-bottom-map : (mb-0: 0rem, mb-1: 0.25rem, mb-2: 0.5rem, mb-3: 1rem, mb-4: 1.5rem, mb-5: 2rem, mb-6: 3rem);
+$margin-left-map :   (ml-0: 0rem, ml-1: 0.25rem, ml-2: 0.5rem, ml-3: 1rem, ml-4: 1.5rem, ml-5: 2rem, ml-6: 3rem);
+$margin-map :        (m-0:  0rem, m-1:  0.25rem, m-2:  0.5rem, m-3:  1rem, m-4:  1.5rem, m-5:  2rem, m-6:  3rem);
+
+@each $margin-class, $margin-side in $margin-top-map {
+  .#{$margin-class}{
+    margin-top : $margin-side;
+  }
+}
+
+@each $margin-class, $margin-side in $margin-right-map {
+  .#{$margin-class}{
+    margin-right : $margin-side;
+  }
+}
+
+@each $margin-class, $margin-side in $margin-bottom-map {
+  .#{$margin-class}{
+    margin-bottom : $margin-side;
+  }
+}
+
+@each $margin-class, $margin-side in $margin-left-map {
+  .#{$margin-class}{
+    margin-left : $margin-side;
+  }
+}
+
+@each $margin-class, $margin-side in $margin-map {
+  .#{$margin-class}{
+    margin : $margin-side;
+  }
+}
+
+/*Padding*/
+
+$padding-top-map :    (pt-0: 0rem, pt-1: 0.25rem, pt-2: 0.5rem, pt-3: 1rem, pt-4: 1.5rem, pt-5: 2rem, pt-6: 3rem);
+$padding-right-map :  (pr-0: 0rem, pr-1: 0.25rem, pr-2: 0.5rem, pr-3: 1rem, pr-4: 1.5rem, pr-5: 2rem, pr-6: 3rem);
+$padding-bottom-map : (pb-0: 0rem, pb-1: 0.25rem, pb-2: 0.5rem, pb-3: 1rem, pb-4: 1.5rem, pb-5: 2rem, pb-6: 3rem);
+$padding-left-map :   (pl-0: 0rem, pl-1: 0.25rem, pl-2: 0.5rem, pl-3: 1rem, pl-4: 1.5rem, pl-5: 2rem, pl-6: 3rem);
+$padding-map :        (p-0:  0rem, p-1:  0.25rem, p-2:  0.5rem, p-3: 1rem,  p-4: 1.5rem,  p-5: 2rem,  p-6:  3rem);
+
+@each $padding-class, $padding-side in $padding-top-map {
+  .#{$padding-class}{
+    padding-top : $padding-side;
+  }
+}
+
+@each $padding-class, $padding-side in $padding-right-map {
+  .#{$padding-class}{
+    padding-right : $padding-side;
+  }
+}
+
+@each $padding-class, $padding-side in $padding-bottom-map {
+  .#{$padding-class}{
+    padding-bottom : $padding-side;
+  }
+}
+
+@each $padding-class, $padding-side in $padding-left-map {
+  .#{$padding-class}{
+    padding-left : $padding-side;
+  }
+}
+
+@each $padding-class, $padding-side in $padding-map {
+  .#{$padding-class}{
+    padding : $padding-side;
+  }
+}
+
+/*Border*/
+
+$border-top-map : (border-top-0: 0rem, border-top-1: 0.1rem, border-top-2: 0.2rem, 
+border-top-3: 0.3rem, border-top-4: 0.4rem, border-top-5: 0.5rem, border-top-6: 1rem);
+
+@each $border-class, $border-side in $border-top-map {
+  .#{$border-class}{
+    border-top : $border-side solid;
+  }
+}
+
+$border-right-map : (border-right-0: 0rem, border-right-1: 0.1rem, border-right-2: 0.2rem, 
+border-right-3: 0.3rem, border-right-4: 0.4rem, border-right-5: 0.5rem, border-right-6: 1rem);
+
+@each $border-class, $border-side in $border-right-map {
+  .#{$border-class}{
+    border-right : $border-side solid;
+  }
+}
+
+$border-bottom-map : (border-bottom-0: 0rem, border-bottom-1: 0.1rem, border-bottom-2: 0.2rem, 
+border-bottom-3: 0.3rem, border-bottom-4: 0.4rem, border-bottom-5: 0.5rem, border-bottom-6: 1rem);
+
+@each $border-class, $border-side in $border-bottom-map {
+  .#{$border-class}{
+    border-bottom : $border-side solid;
+  }
+}
+
+$border-left-map : (border-left-0: 0rem, border-left-1: 0.1rem, border-left-2: 0.2rem, 
+border-left-3: 0.3rem, border-left-4: 0.4rem, border-left-5: 0.5rem, border-left-6: 1rem);
+
+@each $border-class, $border-side in $border-left-map {
+  .#{$border-class}{
+    border-left : $border-side solid;
+  }
+}
+
+$border-map : (border-0: 0rem, border-1: 0.1rem, border-2: 0.2rem, 
+border-3: 0.3rem, border-4: 0.4rem, border-5: 0.5rem, border-6: 1rem);
+
+@each $border-class, $border-side in $border-map {
+  .#{$border-class}{
+    border : $border-side solid;
+  }
+}

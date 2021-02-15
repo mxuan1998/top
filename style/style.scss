@@ -1,0 +1,434 @@
+$color-norse: #cc9543;
+$title-color: #4a4a4a;
+$text-color: rgba(74,74,74,0.7);
+$orange-color: #ce973e;
+$button-color: #6abfc3;
+$curriculum-color: #f3f3f3;
+
+@font-face {
+  font-family: 'Norse';
+  src: url('../font/Norsebold.otf');
+}
+
+html {
+  font-size: 10px;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: $text-color;
+}
+
+/*  Header  */
+
+header{
+  padding: 0 68px;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  
+  @media screen and (max-width: 992px){
+    padding: 0 10px;
+    justify-content: space-evenly;
+  }
+
+  @media screen and (max-width: 768px){
+     padding: 0 10px;
+     justify-content: space-between;
+     position: fixed;
+     top: 0;
+     width: 100%;
+     height: 70px;
+     background-color: #fff;
+     margin-top: 0px;
+     
+  }
+}
+
+.odin-logo{
+  img{
+    height: 70px;
+  }
+
+  @media screen and (max-width: 992px){
+    img{
+      height: 60px;
+    }
+  }
+}
+
+.logo-text{
+  color: $color-norse;
+  font-family: "Norse";
+  letter-spacing: 0.4px;
+  font-weight: bold;
+  font-size: 2.4em;
+  padding-left: 0.5em;
+
+  @media screen and (min-width: 1036px){
+      font-size: 3.2em;
+  }
+}
+
+.header-menu{
+  background-color: white;
+
+  div{
+    width: 25px;
+    height: 2px;
+    background-color: $button-color;
+    margin: 5px 0;
+  }
+}
+
+.header-nav ul{
+  li{
+    color: $text-color;
+    letter-spacing: 0.2px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  li:nth-child(2) a::after{
+    content: '';
+    border-top: 4.5px solid $text-color;
+    border-right: 4.5px solid white;
+    border-left: 4.5px solid white;
+    display: inline-block;
+    margin-left: 7px;
+    vertical-align: 0.255em;
+  }
+
+  a{
+    color: $text-color;
+  }
+
+  a:hover{
+    color: black;
+  }
+}
+
+/*  Top page  */
+
+%text-content{
+  font-size: 18px;
+  text-align: center;
+}
+
+.top-intro{
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  margin-bottom: 60px;
+  margin-top: 100px;
+
+  h1{
+    color: $orange-color;
+    font-size: 36px;
+    letter-spacing: 0.4px;
+    max-width: 80%;
+    margin: 0 auto 2rem auto;
+    font-weight: 300;
+    text-align: center;
+  }
+
+  p{
+    @extend %text-content;
+    margin-bottom: 70px;
+  }
+
+  a:hover{
+    opacity: 0.8;
+  }
+}
+
+.view-full-curriculum{
+  background-color: $button-color;
+  border-radius: 0.2em;
+  box-shadow: 0 0.05em 0.25em 0 rgba(0,0,0,0.5);
+  padding: 16px 56px 16px 56px;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-block;
+
+  @media screen and (max-width: 768px){
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+/*  How it works */
+
+.how-it-works{
+  padding-top: 100px;
+  padding-bottom: 70px;
+}
+
+%section-header{
+  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: 0.3px;
+  color: $title-color;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.hit-title{
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  text-align: center;
+
+  h2{
+    margin-bottom: 36px;
+    @extend %section-header;
+  }
+
+  p{
+    padding-top: 1rem;
+    font-size: 18px;
+    letter-spacing: 0.2px;
+    margin: 0;
+    line-height: 1.88;
+  }
+}
+
+.hit-steps{
+  max-width: 1080px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.learn-steps{
+  padding: 1rem;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+
+  img{
+    height: 165px;
+    vertical-align: middle;
+  }
+
+  h4{
+    margin: 50px 0 20px;
+    font-weight: bold;
+    color: $title-color;
+  }
+
+  p{
+    line-height: 1.88;
+  }
+}
+
+/*  Learn everything... */
+
+.curriculum{
+  padding: 60px 0;
+  background-color: $curriculum-color;
+  text-align: center;
+
+  h2{
+    margin-bottom: 60px;
+    @extend %section-header;
+  }
+
+  >a:hover{
+    opacity: 0.8;
+  }
+}
+
+.container{
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.disciplines{
+  background: #fff;
+  box-shadow: 0 7px 16px 0 rgba(0,0,0,0.05);
+  height: 256px;
+  max-width: 254px;
+  margin: 0 30px 30px 0;
+  padding: 23px 46px 25px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+
+  img{
+    height: 160px;
+    width: 160px;
+  }
+
+  p{
+    margin-top: 18px;
+    margin-bottom: 8px;
+    color: $title-color;
+  }
+
+}
+
+.get-started{
+  @extend .view-full-curriculum;
+  background-color: $color-norse;
+  margin-top: 40px;
+}
+
+/* Success stories */
+
+.success-stories{
+  background-image: linear-gradient(to bottom, #fff, #eee);
+
+  h2{
+    @extend %section-header;
+    padding-top: 70px;
+    margin-bottom: 8px;
+  }
+}
+
+.success-stories-container{
+  max-width: 1280px;
+  min-height: 400px;
+  margin: 0 auto;
+  margin-top: 100px;
+  
+  >a{
+    font-size: 16px;
+    text-decoration: underline;
+    color: $text-color;
+    display: inline-block;
+    padding-top: 30px;
+    
+    &:hover{
+      color: black;
+    }
+  }
+}
+
+.success-story{
+  max-width: 600px;
+  margin: 0 auto;
+  padding-bottom: 36px;
+  flex: 1;
+}
+
+.success-story-photo{
+  flex-basis: 100px;
+  text-align: center;
+  padding-top: 16px;
+
+  img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+}
+
+.success-content{
+  flex: 1;
+
+  p{
+    font-size: 18px;
+    letter-spacing: 0.2px;
+    line-height: 1.88;
+
+    a{
+      color: $orange-color;
+
+      &:hover{
+        color: black;
+      }
+    }
+  }
+}
+
+.cta{
+  font-weight: 100;
+  padding: 80px 40px;
+  text-align: center;
+
+  P{
+    font-size: 35.2px;
+    line-height: 24px;
+    margin: 0 auto 61px;
+  }
+
+  a:hover{
+    opacity: 0.8;
+  }
+}
+
+.sign-up{
+  @extend .view-full-curriculum;
+}
+
+footer{
+  background-color: #fff;
+  padding: 0;
+  text-align: center;
+  font-size: 1em;
+  min-height: 277px;
+  width: 100%;
+  position: relative;
+  bottom: 0px;
+  display: flex;
+
+  @media screen and(max-width: 768px){
+    min-height: 140px;
+  }
+}
+
+.odin-logo-footer{
+  @extend .odin-logo;
+  flex: 2;
+
+  @media screen and (max-width: 768px){
+    display: none;
+  }
+}
+
+.logo-text-footer{
+  @extend .logo-text;
+  font-size: 25.6px;
+
+  @media screen and (max-width: 1036px){
+    font-size: 19.2px;
+    padding-left: 9.6px;
+  }
+}
+
+.footer-links{
+  font-size: 16px;
+  flex: 2;
+  font-weight: bold;
+
+  @media screen and (max-width:768px){
+    flex:1;
+  }
+
+  a{
+    color: $text-color;
+    flex-basis: 30px;
+
+    &:hover{
+      color: black;
+    }
+  }
+}
+
+.footer-links-content{
+  width: 130px;
+}
+
+.footer-social{
+  flex: 1;
+
+  a{
+    color: #cc9543;
+    text-decoration: underline;
+    font-size: 24px;
+    flex:1;
+
+    &:hover{
+      color: black;
+    }
+  }
+}
